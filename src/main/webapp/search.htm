@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB">
+<head>
+<title>Technopark - Visitor Management System</title>
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+<link rel="stylesheet" type="text/css"
+	href="./css/jquery.dataTables.min.css" media="screen" />
+<link rel="stylesheet" type="text/css"
+	href="./css/jquery.dataTables_themeroller.css" media="screen" />
+<link rel="stylesheet" href="./css/jquery-ui.min.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="./css/screen.css"
+	media="screen" />
+<link rel="stylesheet" type="text/css" href="./css/form.css"
+	media="screen" />
+<link rel="stylesheet" type="text/css" href="./css/print.css"
+	media="print" />
+<script type="text/javascript" src="./js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="./js/tpark.js"></script>
+<script>
+  $(function() {
+    $( "#fromDate" ).datepicker();
+    $( "#toDate" ).datepicker();
+  });
+  
+  </script>
+
+</head>
+<body>
+
+	<table class="headerclass" border="0" width="100%">
+		<tr>
+			<td width="3%"></td>
+			<td width="100%"><img src="./images/header.png"></img></td>
+		</tr>
+	</table>
+<div id="nav">
+	<ul>
+  <li><a href="./">Home</a></li>
+  <li><a href="./search.htm">Search</a></li>
+  
+</ul>
+	</div>
+	<div class="colmask blogstyle">
+		<div class="colmid">
+			<div class="colleft">
+				<div class="col1">
+					<center>
+					<b><font color="red">
+						<span class="message"></span></font></b></center>
+					<form id="signup" method="post">
+						<fieldset>
+							<legend>Enter Details</legend>
+							<ol>
+
+								<li><label for="fromDate">From Date *</label> <input
+									type="text" id="fromDate" name="fromDate"
+									placeholder="From Date" class="fromDate" required /></li>
+
+								<li><label for="toDate">To Date *</label> <input
+									type="text" id="toDate" name="toDate" placeholder="To Date"
+									class="toDate" required /></li>
+									
+								<li><label for="toDate">Show Image*</label> <input
+									type="checkbox" id="showimg" name="showimg" class="showimg" /></li>
+								
+
+								<input type="submit" id="save" class="save" value="Search" />
+					</form>
+
+
+				</div>
+				<div class="col3"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="results" style="display:none">
+		<table class="display" cellspacing="0" width="100%" border="0"
+			id="tableId">
+			<thead>
+				<tr>
+					<th width="10%">First Name</th>
+					<th width="10%">Mobile</th>
+					<th width="10%">Purpose</th>
+					<!-- <th width="10%">Image</th> -->
+				</tr>
+			</thead>
+		</table>
+	</div>
+
+	<div id="footer" class="footer">Works ONLY in Chrome at 1024 x
+		768</div>
+	<script>
+
+/**
+ * AJAX call to REST Service
+ * */
+
+$("#signup").submit(
+		function(event) {
+			var formJqObj = $("#signup");
+			var formDataObj = {};
+			(function() {
+				formJqObj.find(":input").not("[type='submit']").not(
+						"[type='reset']").each(function() {
+					var thisInput = $(this);
+					formDataObj[thisInput.attr("name")] = thisInput.val();
+				});
+			})();
+			console.log('' + JSON.stringify(formDataObj))
+			$.ajax({
+				type : "POST",
+				url : "/visitormanagment/api/visitor/search",
+				data : JSON.stringify(formDataObj),
+				contentType : "application/json",
+
+			}).done(
+					function(data, textStatus, jqXHR) {
+						//console.log("Ajax completed: " + JSON.stringify(data));
+						//var oTable = $('#tableId').dataTable(JSON.stringify(data));
+						if($("#showimg").is(':checked')){
+							var header = "<th>Photo</th>";
+							$("#tableId").html(header); 
+							$('#tableId').dataTable({
+					        	"bJQueryUI":true,
+					            "bScrollCollapse":true,
+					            aaData:data,
+					            "aoColumns":
+					            	[
+				                        { "mData": "firstName" },
+				                        { "mData": "mobile" },
+				                        { "mData": "purpose" },
+				                        { "mRender":
+				                        	  function(data, type, full) {
+				                        		return '<img src="data:image/png;base64,'+full.imageencodestr+'"\>';
+				                        	 }
+				                        }
+				                      ]
+					         });
+						}else{
+							
+							$('#tableId').dataTable({
+					        	"bJQueryUI":true,
+					            "bScrollCollapse":true,
+					            aaData:data,
+					            "aoColumns":
+					            	[
+				                        { "mData": "firstName" },
+				                        { "mData": "mobile" },
+				                        { "mData": "purpose" },				                       
+				                      ]
+					         });
+						}
+						$("#results").show();
+						
+					}).fail(
+					function(jqXHR, textStatus, errorThrown) {
+						console.log("Ajax problem: " + textStatus + ". "
+								+ errorThrown);
+					});
+			event.preventDefault();
+		});
+	</script>
+</body>
+</html>

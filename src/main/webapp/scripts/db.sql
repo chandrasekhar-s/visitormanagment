@@ -1,0 +1,38 @@
+DROP TABLE VISITOR_INFO;
+CREATE TABLE VISITOR_INFO
+(
+ID int NOT NULL AUTO_INCREMENT,
+NAME varchar(50) NOT NULL,
+PURPOSE varchar(255),
+MOBILE varchar(13) NOT NULL,
+ACCMPND_CNT int,
+ACCMPNY_NAME  varchar(50),
+COMPANY varchar(100),
+BUILDING varchar(50),
+VECH_NO varchar(20),
+PHOTOID varchar(20),
+PHOTOID_TYPE varchar(20),
+ISSUE_DATE DATETIME,
+VALID_FOR_HOURS int,
+PRIMARY KEY (ID)
+);
+
+CREATE TABLE VISITOR_IMAGE(
+ID int NOT NULL,
+IMAGE MEDIUMTEXT CHARACTER SET ascii,
+PRIMARY KEY (ID)
+);
+
+CREATE TABLE BUILDING_INFO(
+ID int NOT NULL AUTO_INCREMENT,
+BUILDING_NAME varchar(50),
+PRIMARY KEY (ID)
+);
+
+CREATE TABLE COMPANY_INFO(
+ID int NOT NULL AUTO_INCREMENT,
+COMPANY_NAME varchar(50),
+PRIMARY KEY (ID)
+);
+
+{"firstName":"qwewqeq","purpose":"eqwq","mobile":"1234567890","company":"dfsadfadsf","building":"Padmanbham","vechno":"sdfdssf","email":"chandrasekhar.s@gmail.com"}

@@ -1,0 +1,25 @@
+#sidebar{
+	display: none;
+}
+.logo{display: none}
+
+#col1{
+	display: none;
+}
+
+.col1{
+	display: none;
+}
+.headerclass{
+	display: none;
+}
+#footer{
+	display: none;
+}
+#print1{
+	display: none;
+}
+#previewlgnd{
+	display: none;
+}
+#preview fieldset{margin: 0 0 20px;padding: 20px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px; width:200px;}

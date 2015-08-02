@@ -1,0 +1,247 @@
+<html>
+  <head>
+    <title></title>
+	<link rel="stylesheet" href="form.css" type="text/css"/>
+	<script type="text/javascript" src="form.js"></script>
+	<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="jquery-barcode.min.js"></script>  
+    <style>
+        body{font-family:Sans-Serif;}
+        canvas{position:absolute; left: -9999em;}
+         #save{background-color: Red; color: #fff; padding: 3px 10px; cursor:pointer; display: inline-block; border-radius: 5px;}
+        #button{background-color: Red; color: #fff; padding: 3px 10px; cursor:pointer; display: inline-block; border-radius: 5px;}
+         #clear{background-color: Red; color: #fff; padding: 3px 10px; cursor:pointer; display: inline-block; border-radius: 5px;}
+        #sidebar{float:left; width: 45%;}
+        #previewbar{float:right; width: 45%;}
+         #vpreviewbar{float:right; width: 45%;}
+        #main{float:right; width: 45%;margin: 0px 10}
+        #imageToForm{width:100%;}
+        #preview{margin: 0px 0;}
+        label{display: block;}        
+    </style>
+  </head>
+  <body>
+  
+  <div id="sidebar">
+     <form id="signup" action="">
+   	<h2>Fields marked (*) are required</h2>
+  	<fieldset>
+   <legend>Enter Details</legend>
+   <ol>
+    <li>
+     <label for="firstname">First Name *</label> 
+     <input type="text" id="firstname" name="firstname" placeholder="First Name"  class="firstname" required />
+    </li>
+    <li>
+    <label for="lastname">Purpose of Visit *</label> 
+    <input type="text" id="lastname" name="lastname" placeholder="Last Name"  class="lastname" required />
+    </li>
+     
+   <!--  <li>
+     <label for="tel">Mobile *</label> 
+     <input type="tel" id="tel" name="tel" pattern="\d{10}" placeholder="Please enter a ten digit phone number"  class="tel" required />
+     <p class="validation01">
+      <span class="invalid">No spaces or brackets e.g. 9999999999</span>
+      <span class="valid">Your mobile number is valid</span>
+     </p>
+    </li> -->
+     <li>
+     <label for="company">Company</label>
+     <select name="company" id="company" class="company">
+      <option>Allianz</option>
+      <option>UST Global</option>
+      <option>Infosys</option>
+      <option>Quest</option>
+     </select>
+    </li>
+     <li>
+     <label for="bildng">Building</label>
+     <select name="company" id="bildng" class="bildng">
+      <option>Padmanbham</option>
+      <option>Nila</option>
+      <option>Tesjaswini</option>
+      <option>Bhavani</option>
+     </select>
+    </li>
+     <li>
+     <label for="email">Email *</label> 
+     <input type="email" id="email" name="email"  class="email" title="Please enter a valid email" required />
+     <p class="validation01">
+      <span class="invalid">Please enter a valid email address e.g. swapnil@example.com</span>
+      <span class="valid">Your email address is now valid</span>
+     </p>
+    </li>
+   </ol>
+  </fieldset>
+  	<a id="save">Save</a>
+    
+ </form>
+
+ </div>
+  
+  <div id="vpreviewbar">
+  <fieldset>
+   <legend>Take Picture</legend>
+   <video id="video" width="160" height="120"></video>
+    	<!--preview image captured from canvas-->
+       </br>
+        <a id="button">Take Picture</a>
+        <a id="clear">Next Please</a>
+        <!-- target for the canvas-->
+        <div id="canvasHolder"></div>
+  </fieldset>
+  </div>
+  <div id="previewbar">
+  <fieldset>
+   <legend>Preiew Pass</legend>
+		
+        <img id="preview" src="" width="160" height="120" />
+    	
+    	</br>
+    	
+        Name : <span class="firstname_preview"></span> </br>
+        Purpose: <span class="lastname_preview"></span>     </br>  
+        <span class="email_preview"></span></br>
+        <span class="tel_preview"></span></br>
+        <span class="company_preview"></span></br> 
+        <span class="bildng_preview"></span></br> 
+        <div id="bcTarget"></div> 
+        <input type="submit" value="Print"  onclick="printDiv('previewbar')"/>
+     </fieldset>
+      
+ </div>
+ 
+  
+    <script>
+        var video;
+        var dataURL;
+        function setup() {
+            navigator.myGetMedia = (navigator.getUserMedia ||
+            navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia ||
+            navigator.msGetUserMedia);
+            navigator.myGetMedia({ video: true }, connect, error);
+        }
+
+        function connect(stream) {
+            video = document.getElementById("video");
+            video.src = window.URL ? window.URL.createObjectURL(stream) : stream;
+            video.play();
+        }
+
+        function error(e) { console.log(e); }
+
+        addEventListener("load", setup);
+
+        function captureImage() {
+            var canvas = document.createElement('canvas');
+            canvas.id = 'hiddenCanvas';
+            //add canvas to the body element
+            document.body.appendChild(canvas);
+            //add canvas to #canvasHolder
+            document.getElementById('canvasHolder').appendChild(canvas);
+            var ctx = canvas.getContext('2d');
+            canvas.width = video.videoWidth / 4;
+            canvas.height = video.videoHeight / 4;
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            //save canvas image as data url
+            dataURL = canvas.toDataURL();
+            //set preview image src to dataURL
+            document.getElementById('preview').src = dataURL;
+            // place the image value in the text box
+            document.getElementById('imageToForm').value = dataURL;
+        }
+        
+        function clear() {
+        	
+        	 document.getElementById('preview').src = "";
+            
+           }
+        
+       function onSave(){
+    	   $("#bcTarget").barcode($(".firstname").val(), "code128",{barWidth:2, barHeight:30});
+       }
+
+        //Bind a click to a button to capture an image from the video stream
+        var el = document.getElementById("button");
+        el.addEventListener("click", captureImage, false);
+        
+      //Bind a click to a button to capture an image from the video stream
+        var el = document.getElementById("clear");
+        el.addEventListener("click", clear, false);
+        
+      //Bind a click to a button to capture an image from the video stream
+        var el = document.getElementById("save");
+        el.addEventListener("click", onSave, false);
+
+   
+    </script>
+
+<script type="text/javascript">
+$(function() 
+{
+	$(".firstname").keyup(function(){
+		var word=$(this).val();
+	$(".firstname_preview").html(word);
+	return false;
+});
+});
+$(function() 
+{
+	$(".lastname").keyup(function(){
+	var word=$(this).val();
+	$(".lastname_preview").html(word);
+	return false;
+	});
+});
+$(function() 
+{
+	$(".email").keyup(function(){
+	var word=$(this).val();
+	$(".email_preview").html(word);
+	return false;
+	});
+});
+$(function() 
+{
+	$(".tel").keyup(function(){
+	var word=$(this).val();
+	$(".tel_preview").html(word);
+	return false;
+	});
+});
+$(function() 
+{
+	$(".bildng").change(function(){
+	var word=$(this).val();
+	$(".bildng_preview").html(word);
+	return false;
+	});
+});
+$(function() 
+{
+	$(".company").change(function(){
+	var word=$(this).val();
+	$(".company_preview").html(word);
+	return false;
+	});
+});
+
+function printDiv(divName) {
+    var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = printContents;
+
+    window.print();
+
+    document.body.innerHTML = originalContents;
+}
+</script>
+	    <label>base64 image:</label>        
+        <input id="imageToForm" type="text" />
+       
+        
+
+</body>
+</html>

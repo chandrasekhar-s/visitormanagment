@@ -1,0 +1,363 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB">
+<head>
+<title>Technopark - Visitor Management System</title>
+<meta http-equiv="Content-Type"	content="application/xhtml+xml; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="screen.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="form.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+<link rel="stylesheet" href="jquery-ui.min.css" type="text/css" />
+<script type="text/javascript" src="/tpark-visitor-mgmt/js/form.js"></script>
+<script type="text/javascript" src="/tpark-visitor-mgmt/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/tpark-visitor-mgmt/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/tpark-visitor-mgmt/js/jquery-barcode.min.js"></script>
+<script type="text/javascript" src="/tpark-visitor-mgmt/js/jquery.print.js"></script>
+
+
+</head>
+<body>
+	 <table class="headerclass" border="0" width="100%">
+	<tr>
+	<td width="3%"></td> 
+	<td><img src="./images/technopark_logo.jpg" style="height: 25px; "></img></td>
+	</tr>
+	</table>
+		
+ 	<div class="colmask blogstyle">
+		<div class="colmid">
+			<div class="colleft">
+				<div class="col1">
+					<center><b><font color="red"><span class="message"></span></font></b></center>
+					<form id="signup" method="post">
+							<fieldset>
+							<legend>Enter Details</legend>
+							<ol>
+								<li>
+								<table border="0">
+								<tr>
+								<td><label for="picture">Guest Photo</label></td>
+								<td><video id="video" width="100" height="100"></video></td>
+								<td align="bottom">								
+								<input type="submit" id="takepic" value="Take Picture" />
+								</td>
+							 	<td><div id="canvasHolder"></div></td>
+								</tr>
+								</table>
+								</li>
+								<li><label for="firstName">First Name *</label> 
+									<input type="text" id="firstName" name="firstName"
+									placeholder="First Name" class="firstName" required /></li>
+									
+								<li><label for="purpose">Purpose of Visit *</label> <input
+									type="text" id="purpose" name="purpose"
+									placeholder="Purpose" class="purpose" required /></li>
+									
+									<li><label for="mobile">Mobile *</label> <input type="mobile"
+									id="mobile" name="mobile" pattern="\d{10}"
+									placeholder="Please enter a ten digit phone number" class="mobile"
+									 />
+									<p class="validation01">
+										<span class="invalid">No spaces or brackets e.g.
+											9999999999</span> <span class="valid">Your mobile number is
+											valid</span>
+									</p></li>
+								
+								<li><label for="companion">No of Guests Accompanying </label>
+								<INPUT id="accompanyCount"  name="accompanyCount" TYPE="NUMBER" MIN="0" MAX="10" STEP="1" VALUE="0" SIZE="6"></INPUT></li>
+								
+								<li><label for="accname">Accompany Name</label> <input
+									type="text" id="accompanyName" name="accompanyName"
+									placeholder="Companion Name" class="accname" /></li>
+								
+								
+								<li><label for="company">Company</label> 
+								<input type="text"	name="company" id="company" class="company" /></li>
+								
+								<li><label for="building">Building</label> <select
+									name="building" id="building" class="building">
+										<option>Padmanbham</option>
+										<option>Nila</option>
+										<option>Tesjaswini</option>
+										<option>Bhavani</option>
+								</select></li>
+								
+								<li><label for="vechno">Vehicle No</label> 
+										<input
+									type="text" id="vechno" name="vechno"
+									placeholder="Vehicle No" class="vechno" /></li>
+									
+									<li><label for="photoid">Photo Id Number</label> <input
+									type="text" id="photoId" name="photoId"
+									placeholder="Photo Id Number" class="personid" />
+								<select
+									name="photoIdType" id="photoIdType" class="personidselect">
+										<option>Voter Id</option>
+										<option>Aadhar</option>
+										<option>License</option>
+										<option>Other</option>
+								</select>
+									
+									</li>
+								
+							<!-- 	<li><label for="email">Email </label> <input type="email"
+									id="email" name="email" class="email"
+									title="Please enter a valid email" />
+									<p class="validation01">
+										<span class="invalid">Please enter a valid email
+											address e.g. someone@tpark.org</span> <span class="valid">Your
+											email address is now valid</span>
+									</p></li> -->
+									
+									<li><label for="validity">Pass Valid for (hours)</label>
+									<INPUT id="validity" name="validity" class="validupto" TYPE="number" MIN="0" MAX="8" STEP="1" VALUE="2" SIZE="6"></INPUT></li>
+							</ol>
+							
+						</fieldset>
+						<input type="hidden" name="imageencodestr" id="imageencodestr" />
+						<input type="submit" id="save" class="save" value="Save" />
+								
+						<h5>Fields marked (*) are required</h5>
+					</form>
+							<input type="submit" id="next" value="Clear" />
+					
+				</div>
+				<div class="col3">
+				<div id="preview">
+					<fieldset >
+						<legend  id="previewlgnd">Preview Pass</legend>
+						<img id="icon" src="./images/technopark_logo_icon.jpg" /><br>
+						<img id="vpreview" src="" width="100" height="100" />
+						 <br /> 
+						 No:<span class="passid_preview"></span> <br /> 
+						 Name:<span class="firstname_preview"></span> <br /> 
+						 Purpose:<span class="purpose_preview"></span> <br /> 
+						 Mobile:<span class="tel_preview"></span><br />
+						 Company:<span class="company_preview"></span><br /> 
+						 Building:<span class="building_preview"></span><br />
+						 Vehicle No:<span class="vechno_preview"></span><br />
+						 Issued On:<span class="date"></span><br />
+						 Time In:<span class="time"></span><br />
+						 Valid for (Hours):<span class="validupto_preview"></span><br />
+						 <div id="bcTarget"></div> 
+						</br>
+						 
+						<input type="submit" id="print1" value="Print" onclick="window.print()" />
+					</fieldset>					 
+					</div>
+				</div>				
+			</div>
+		</div>
+	</div>
+	<div id="footer" class="footer">Works ONLY in Chrome at 1024 x 768</div>
+	<script>
+		var video;
+		var dataURL;
+		function setup() {
+			navigator.myGetMedia = (navigator.getUserMedia
+					|| navigator.webkitGetUserMedia
+					|| navigator.mozGetUserMedia || navigator.msGetUserMedia);
+			navigator.myGetMedia({
+				video : true
+			}, connect, error);
+		}
+
+		function connect(stream) {
+			video = document.getElementById("video");
+			video.src = window.URL ? window.URL.createObjectURL(stream)
+					: stream;
+			video.play();
+		}
+
+		function error(e) {
+			console.log(e);
+		}
+
+		addEventListener("load", setup);
+
+		function clear() {
+			document.getElementById('vpreview').src = "";
+			$(".firstname_preview").html("");
+			$(".purpose_preview").html("");
+			$(".email_preview").html("");
+			$(".tel_preview").html("");
+			$(".building_preview").html("");
+			$(".company_preview").html("");
+			$(".vechno_preview").html("");
+			$(".validupto_preview").html("");
+			$(".passid_preview").html("");
+			
+			//$("#signup").trigger('reset');
+			
+		}
+		function genBarCode(){			
+				var code = $(".firstName").val().substring(0,5)+$(".mobile").val()+$(".building").val().substring(0,4)+$(".company").val().substring(0,4);
+	    	   $("#bcTarget").barcode(code, "code128",{barWidth:1, barHeight:10,showHRI:false});
+	      }
+		function captureImage() {
+			var canvas = document.createElement('canvas');
+			canvas.id = 'hiddenCanvas';
+			//add canvas to the body element
+			document.body.appendChild(canvas);
+			//add canvas to #canvasHolder
+			document.getElementById('canvasHolder').appendChild(canvas);
+			var ctx = canvas.getContext('2d');
+			canvas.width = video.videoWidth / 6;
+			canvas.height = video.videoHeight / 4;
+			ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+			//save canvas image as data url
+			dataURL = canvas.toDataURL();
+			//set preview image src to dataURL
+			document.getElementById('vpreview').src = dataURL;
+			// place the image value in the text box
+			document.getElementById('imageencodestr').value = dataURL;
+			
+			
+		}
+		
+	 
+		
+		$("#signup").submit(function(event){
+			
+		    var formJqObj = $("#signup");
+		    var formDataObj = {};
+		    (function(){
+		        formJqObj.find(":input").not("[type='submit']").not("[type='reset']").each(function(){
+		            var thisInput = $(this);
+		            formDataObj[thisInput.attr("name")] = thisInput.val();
+		        });
+		    })();
+		    console.log(''+JSON.stringify(formDataObj))
+		    $.ajax({
+		        type: "POST",
+		        url: "/tpark-visitor-mgmt/api/visitor/",
+		        data: JSON.stringify(formDataObj),
+		        contentType: "application/json",
+		      
+		    })
+		    .done(function(data, textStatus, jqXHR){
+		    	$(".message").html("Pass Issued "	);
+		    	$(".passid_preview").html(data);
+		    	var d = new Date();
+		    	var strDate = 	d.getDate()+"/"+(d.getMonth()+1)+"/"+d.getFullYear();
+		    	$(".date").html(strDate);
+		    	var minutes = d.getMinutes();
+		    	minutes = minutes > 9 ? minutes : '0' + minutes;
+		    	$(".time").html(d.getHours() + ":" + minutes );
+		    	$(".validupto_preview").html($(".validupto").val());
+		    	//**Bar Code rmeoved for now
+		    	//genBarCode();
+		    	
+		    	document.getElementById("signup").reset();
+		    	
+		    	console.log("Ajax completed: " + data);
+		    })
+		    .fail(function(jqXHR, textStatus, errorThrown){
+		        console.log("Ajax problem: " + textStatus + ". " + errorThrown);
+		    });
+		    event.preventDefault();
+		});
+		
+		//Bind a click to a button to capture an image from the video stream
+		var el = document.getElementById("takepic");
+		el.addEventListener("click", captureImage, false);
+		
+		//Bind a click to a button to capture an image from the video stream
+		var el = document.getElementById("next");
+		el.addEventListener("click", clear, false);
+		
+		//Bind a click to a button to capture an image from the video stream
+		var el = document.getElementById("save");
+		el.addEventListener("click", save, false);
+	</script>
+
+	<script type="text/javascript">
+		$(function() {
+			$(".firstName").keyup(function() {
+				var word = $(this).val();
+				$(".firstname_preview").html(word);
+				return false;
+			});
+		});
+		$(function() {
+			$(".purpose").keyup(function() {
+				var word = $(this).val();
+				$(".purpose_preview").html(word);
+				return false;
+			});
+		});
+		$(function() {
+			$(".email").keyup(function() {
+				var word = $(this).val();
+				$(".email_preview").html(word);
+				return false;
+			});
+		});
+		$(function() {
+			$(".mobile").keyup(function() {
+				var word = $(this).val();
+				$(".tel_preview").html(word);
+				return false;
+			});
+		});
+		$(function() {
+			$(".building").change(function() {
+				var word = $(this).val();
+				var added =$(".building_preview").html();
+					added=added+","+word;
+				$(".building_preview").html(added);
+				return false;
+			});
+		});
+		$(function() {
+			$(".company").change(function() {
+				var word = $(this).val();
+				$(".company_preview").html(word);
+				return false;
+			});
+		}); 
+		$(function() {
+			$(".vechno").keyup(function() {
+				var word = $(this).val();
+				$(".vechno_preview").html(word);
+				return false;
+			});
+		}); 
+
+$(function() {
+			$(".validupto").change(function() {
+				var word = $(this).val();
+				$(".validupto_preview").html(word);
+				return false;
+			});
+		}); 
+
+		function printDiv(divName) {
+			 var printContents = document.getElementById(divName).innerHTML;
+			var originalContents = document.body.innerHTML;
+			document.body.innerHTML = printContents;
+			window.print();
+			document.body.innerHTML = originalContents;
+			//$("#col3").print()
+			window.location.reload()
+			
+		}
+		
+		
+	</script>
+<script type="text/javascript">
+   jQuery.get('building.txt', function(data) {
+   var lines = data.split('\n');
+	$.each(lines, function(){
+ 	  $("#building").append($("<option>").attr("value", "0").text(this));
+	});
+ 	});
+ 	jQuery.get('companies.txt', function(data) {
+    var lines = data.split('\n');
+    $(".company").autocomplete({
+			source : lines
+		});
+ 	});
+</script>
+ 
+</body>
+</html>
