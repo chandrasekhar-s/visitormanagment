@@ -4,17 +4,12 @@
 <title>Technopark - Visitor Management System</title>
 <meta http-equiv="Content-Type"
 	content="application/xhtml+xml; charset=utf-8" />
-<link rel="stylesheet" type="text/css"
-	href="./css/jquery.dataTables.min.css" media="screen" />
-<link rel="stylesheet" type="text/css"
-	href="./css/jquery.dataTables_themeroller.css" media="screen" />
+<link rel="stylesheet" type="text/css" 	href="./css/jquery.dataTables.min.css" media="screen" />
+<link rel="stylesheet" type="text/css" 	href="./css/jquery.dataTables_themeroller.css" media="screen" />
 <link rel="stylesheet" href="./css/jquery-ui.min.css" type="text/css" />
-<link rel="stylesheet" type="text/css" href="./css/screen.css"
-	media="screen" />
-<link rel="stylesheet" type="text/css" href="./css/form.css"
-	media="screen" />
-<link rel="stylesheet" type="text/css" href="./css/print.css"
-	media="print" />
+<link rel="stylesheet" type="text/css" href="./css/screen.css" 	media="screen" />
+<link rel="stylesheet" type="text/css" href="./css/form.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="./css/print.css" media="print" />
 <script type="text/javascript" src="./js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
@@ -36,11 +31,10 @@
 			<td width="100%"><img src="./images/header.png"></img></td>
 		</tr>
 	</table>
-<div id="nav">
+	<div id="nav">
 	<ul>
-  <li><a href="./">Home</a></li>
-  <li><a href="./search.htm">Search</a></li>
-  
+	  <li><a href="./">Home</a></li>
+  <li><a href="./search.htm">Search</a></li>  
 </ul>
 	</div>
 	<div class="colmask blogstyle">
@@ -49,7 +43,7 @@
 				<div class="col1">
 					<center>
 					<b><font color="red">
-						<span class="message"></span></font></b></center>
+						<br></br><span class="message"></span></font></b></center>
 					<form id="signup" method="post">
 						<fieldset>
 							<legend>Enter Details</legend>
@@ -78,7 +72,7 @@
 	</div>
 
 	<div id="results" style="display:none">
-		<table class="display" cellspacing="0" width="100%" border="0"
+		<table class="display" cellspacing="0" width="80%" border="0"
 			id="tableId">
 			<thead>
 				<tr>
@@ -100,6 +94,7 @@
  * */
 
 $("#signup").submit(
+		
 		function(event) {
 			var formJqObj = $("#signup");
 			var formDataObj = {};
@@ -158,6 +153,7 @@ $("#signup").submit(
 						
 					}).fail(
 					function(jqXHR, textStatus, errorThrown) {
+						$(".message").html("Un Expected Error ! ");
 						console.log("Ajax problem: " + textStatus + ". "
 								+ errorThrown);
 					});

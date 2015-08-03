@@ -1,6 +1,5 @@
 package org.tpark.visitor.pass.mngmt.svcs;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -55,6 +54,9 @@ public class VisitorRepository{
 		Query query = em.createNativeQuery("SELECT * FROM VISITOR_INFO v1 WHERE ISSUE_DATE BETWEEN :fromdate AND :todate",VisitorEntity.class);
 		query.setParameter("fromdate", fromDt+" 00:00:00");
 		query.setParameter("todate", toDt+" 23:59:59");
+		
+		System.out.println( fromDt+" 00:00:00");
+		System.out.println( toDt+" 23:59:59");
 		
 		String img="";
 		

@@ -19,11 +19,12 @@
 	<td width="100%"><img src="./images/header.png"></img></td>
 	</tr>
 	</table>
+	<br>
 	<div id="nav">
 	<ul>
-  <li><a href="./">Home</a></li>
-  <li><a href="./search.htm">Search</a></li>  
-</ul>
+	  <li><a href="./">Home</a></li>
+	  <li><a href="./search.htm">Search</a></li>  
+	</ul>
 	</div>
  	<div class="colmask blogstyle">
 		<div class="colmid">
@@ -64,7 +65,7 @@
 											valid</span>
 									</p></li>
 								
-								<li><label for="companion">No of Guests Accompanying </label>
+								<li><label for="companion">Visitors Accompanying </label>
 								<INPUT id="accompanyCount"  name="accompanyCount" class= "accompanyCount" TYPE="NUMBER" MIN="0" MAX="10" STEP="1" VALUE="0" SIZE="6"></INPUT></li>
 								
 								<li><label for="accname">Accompany Name</label> <input
@@ -107,14 +108,16 @@
 									</p></li> -->
 									
 									<li><label for="validity">Pass Valid for (hours)</label>
-									<INPUT id="validity" name="validity" class="validupto" TYPE="number" MIN="0" MAX="8" STEP="1" VALUE="2" SIZE="6"></INPUT></li>
+									<INPUT id="validity" name="validity" class="validupto" 
+									TYPE="number" MIN="0" MAX="8" STEP="1" VALUE="2" SIZE="6">
+									</INPUT></li>
 							</ol>							
 						</fieldset>
 						<input type="hidden" name="imageencodestr" id="imageencodestr" />
 						<input type="submit" id="save" class="save" value="Save" />								
 						<!-- <h5>Fields marked (*) are required</h5> -->
 					</form>
-							<input type="submit" id="next" value="Clear" />
+						<input type="submit" id="next" class="save" value="Clear" />
 					
 				</div>
 				<div class="col3">
@@ -134,7 +137,7 @@
 						 Issued On:<span class="date"></span><br />
 						 Time In:<span class="time"></span><br />
 						 Valid for (Hours):<span class="validupto_preview"></span><br />
-						 <div id="bcTarget"></div> 
+						<!--  <div id="bcTarget"></div>  -->
 						</br>
 						 
 						<input type="submit" id="print" value="Print" onclick="window.print()" disabled="disabled" />

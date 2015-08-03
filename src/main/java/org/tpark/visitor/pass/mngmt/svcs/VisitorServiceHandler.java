@@ -1,6 +1,7 @@
 package org.tpark.visitor.pass.mngmt.svcs;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -36,16 +37,24 @@ public class VisitorServiceHandler{
 	public ResponseEntity savePass(@RequestBody Visitor guest){	
 		VisitorEntity guestEntity = new VisitorEntity();
 		BeanUtils.copyProperties(guest, guestEntity);
-		long passId=vRepo.savePass(guestEntity);
-		vRepo.saveImage(guestEntity);		
-		
-		
+		long passId=0;
 		try {
+			passId = vRepo.savePass(guestEntity);
+			vRepo.saveImage(guestEntity);
+		} catch (Exception e) {
+			System.out.println("-- SAVE FAILED --"+e.getMessage());
+			e.printStackTrace();
+			HttpHeaders headers = new HttpHeaders();
+			return new ResponseEntity(e.getMessage(), headers, HttpStatus.SERVICE_UNAVAILABLE);
+		}		
+		
+		
+	/*	try {
 			testRepo.getImage(1);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		HttpHeaders headers = new HttpHeaders();
 		return new ResponseEntity(passId, headers, HttpStatus.OK);
 	
@@ -56,24 +65,17 @@ public class VisitorServiceHandler{
 	@RequestMapping(value="/search", produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<List<Visitor>> search(@RequestBody SearchCritera criteria){	
-		List<Visitor> result = vRepo.search(criteria);
-		
-		/*VisitorJsonObject vj = new VisitorJsonObject();
-		vj.setiTotalDisplayRecords(500);
-		//Set Total record
-		vj.setiTotalRecords(500);
-		vj.setAaData(result)*/;
+		List<Visitor> result=Collections.emptyList();
+		try {
+			result = vRepo.search(criteria);
+		} catch (Exception e) {
+			System.out.println("-- SEARCH FAILED --"+e.getMessage());
+			e.printStackTrace();
+			HttpHeaders headers = new HttpHeaders();
+			return new ResponseEntity(e.getMessage(), headers, HttpStatus.SERVICE_UNAVAILABLE);
+		}
 		HttpHeaders headers = new HttpHeaders();
-		 ObjectMapper mapper = new ObjectMapper();
-	       /* String json = "";
-	        try {
-	            json = mapper.writeValueAsString(result);
-	        } catch (JsonProcessingException e) {
-	            // TODO Auto-generated catch block
-	            e.printStackTrace();
-	        }
-	        System.out.println(json);*/
-		return new ResponseEntity<List<Visitor>>(result, headers, HttpStatus.OK);
+	    return new ResponseEntity<List<Visitor>>(result, headers, HttpStatus.OK);
 	
 	}
 }
