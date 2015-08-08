@@ -2,11 +2,14 @@ package org.tpark.visitor.pass.mngmt.svcs;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.Transient;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
@@ -41,7 +44,7 @@ public class VisitorRepository{
 	    }
 
 
-	public List<Visitor> search(SearchCritera criteria) {
+	public List<Visitor> _search(SearchCritera criteria) {
 		//Lazy Query :( do better
 		//Set time properly
 		
@@ -76,5 +79,65 @@ public class VisitorRepository{
 			
 		}
 		return result;
+	}
+	
+	public List<Visitor> search(SearchCritera criteria) {
+		
+		List<Visitor> result = new ArrayList<Visitor>();
+		String arr[] =criteria.getFromDate().split("/");
+		String fromDt=arr[2]+"-"+arr[0]+"-"+arr[1];
+
+		String arr_1[] =criteria.getToDate().split("/");
+		String toDt=arr_1[2]+"-"+arr_1[0]+"-"+arr_1[1];
+		
+		String joinQuery = "SELECT V1.*,V2.IMAGE FROM VISITOR_INFO V1 LEFT JOIN VISITOR_IMAGE V2 ON V1.ID=V2.ID WHERE "
+							+ " ISSUE_DATE BETWEEN :fromDate AND :toDate";
+		
+		String nonJoinQuery= "SELECT * FROM VISITOR_INFO v1 WHERE ISSUE_DATE BETWEEN :fromdate AND :todate";
+		
+		if(criteria.getShowimg().equals("true")){
+			Query query = em.createNativeQuery(joinQuery);
+			query.setParameter("fromDate", fromDt+" 00:00:00");
+			query.setParameter("toDate", toDt+" 23:59:59");
+			List queryResult = query.getResultList();
+			for (Iterator iterator = queryResult.iterator(); iterator.hasNext();) {
+				Object[] object = (Object[]) iterator.next();
+				Visitor v = new Visitor();
+				v.setFirstName(object[1].toString());
+				v.setPurpose(object[2].toString());
+				v.setMobile(object[3].toString());
+				v.setAccompanyCount(Integer.parseInt(object[4].toString()));
+				v.setAccompanyName(object[5].toString());
+				v.setCompany(object[6].toString());
+				v.setBuilding(object[7].toString());
+				v.setVechno(object[8].toString());
+				v.setPhotoId(object[9].toString());
+				v.setPhotoIdType(object[10].toString());
+				//v.setIssuedDate(Date.(object[11].toString()));
+				v.setValidity(Integer.parseInt(object[12].toString()));
+				v.setImageencodestr(object[13].toString());
+				result.add(v);
+				
+				
+			}
+			
+			
+			
+			
+		}else{
+			Query query = em.createNativeQuery(nonJoinQuery,VisitorEntity.class);
+			query.setParameter("fromdate", fromDt+" 00:00:00");
+			query.setParameter("todate", toDt+" 23:59:59");
+			List<VisitorEntity> entityresult= (List<VisitorEntity>)query.getResultList();
+			for (VisitorEntity visitorEntity : entityresult) {
+				Visitor visitor = new Visitor();
+				BeanUtils.copyProperties(visitorEntity, visitor);
+				result.add(visitor);
+				
+			}
+		}
+		
+		return result;
+		
 	}
 }

@@ -1,7 +1,7 @@
 body {background-color: #ffffff; color: #666; }
 #signup h2 { font-size: 10px; margin: 0 0 12px; }
 #signup{margin: 20px auto;width: 500px;}
-#signup fieldset{margin: 0 0 20px;padding: 20px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px; }
+#signup fieldset{font-size: 12px;margin: 0 0 20px;padding: 20px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px; }
 #signup ol{list-style-type: none;padding: 0;margin: 0;}
 #signup li{margin: 0 0 12px;position: relative;}
 #signup label{font-size: 12px;width: 150px;display: inline-block;vertical-align: top;}
