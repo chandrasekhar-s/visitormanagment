@@ -11,7 +11,7 @@
 		<spring.version>4.0.1.RELEASE</spring.version>
 	</properties>
 	<build>
-		<finalName>visitor-mgmt-ui</finalName>
+		<finalName>visitormanagment</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

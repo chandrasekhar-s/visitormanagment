@@ -4,14 +4,14 @@ body {background-color: #ffffff; color: #666; }
 #signup fieldset{font-size: 12px;margin: 0 0 20px;padding: 20px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px; }
 #signup ol{list-style-type: none;padding: 0;margin: 0;}
 #signup li{margin: 0 0 12px;position: relative;}
-#signup label{font-size: 12px;width: 150px;display: inline-block;vertical-align: top;}
+#signup label{font-family:Arial;font-size: 12px;width: 150px;display: inline-block;vertical-align: top;}
 legend{ color:#00C492;} 
 #signup fieldset input,#signup fieldset select{background: #fff 260px 24px no-repeat;display: inline-block;width:180px;border: 1px solid #00C492;padding: 3px 26px 3px 3px;-moz-transition: background-color 1s ease;-webkit-transition: background-color 1s ease;-o-transition: background-color 1s ease;transition: background-color 1s ease;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
 #signup fieldset input[type="checkbox"]{width:20px;}
 #signup fieldset select{ width: 80px; padding: 3px; }
 #signup fieldset wideselect{ width: 150px; padding: 3px; }
 #signup input::-webkit-input-placeholder,#signup input:-moz-placeholder input:placeholder{color: #f2f2f2;}
-#signup .validation01{background: #F08080;color: #fff;display: none;font-size: 12px;padding: 3px;position: absolute;left: 330px;text-align: center;top: 0;width: 150px;outline: 0;-moz-box-shadow: 0px 0px 4px #ffffff;-webkit-box-shadow: 0px 0px 4px #ffffff;box-shadow: 0px 0px 4px #ffffff;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
+#signup .validation01{background: #F08080;color: #fff;display: none;font-size: 12px;padding: 3px;position: absolute;left: 365px;text-align: center;top: 0;width: 90px;outline: 0;-moz-box-shadow: 0px 0px 4px #ffffff;-webkit-box-shadow: 0px 0px 4px #ffffff;box-shadow: 0px 0px 4px #ffffff;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
 #signup input:focus + .validation01{ display: block; }
 #signup input:focus:required:invalid + .validation01 .valid,#signup input.error:focus + .validation01 .valid,#signup input.required:focus + .validation01 .valid,#signup input:focus + .validation01 .valid{ display: none; }
 #signup input:focus:required:valid + .validation01,#signup input.valid:focus + .validation01{ background: green; }
@@ -36,7 +36,7 @@ input[type="submit"]{
 	 padding: 3px 10px;}
 	 
 body {
-	font-family: Sans-Serif;
+	font-family: Arial;
 }
 
 canvas {

@@ -107,6 +107,7 @@ public class VisitorRepository{
 				v.setPurpose(object[2].toString());
 				v.setMobile(object[3].toString());
 				v.setAccompanyCount(Integer.parseInt(object[4].toString()));
+				if(object[5]!=null)
 				v.setAccompanyName(object[5].toString());
 				v.setCompany(object[6].toString());
 				v.setBuilding(object[7].toString());
