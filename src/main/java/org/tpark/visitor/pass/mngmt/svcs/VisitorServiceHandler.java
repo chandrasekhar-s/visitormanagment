@@ -36,6 +36,7 @@ public class VisitorServiceHandler{
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity savePass(@RequestBody Visitor guest){	
 		VisitorEntity guestEntity = new VisitorEntity();
+		guest.setBuilding(guest.getBuildingstr().trim().replace("\n", ""));
 		BeanUtils.copyProperties(guest, guestEntity);
 		long passId=0;
 		try {
@@ -48,13 +49,7 @@ public class VisitorServiceHandler{
 			return new ResponseEntity(e.getMessage(), headers, HttpStatus.SERVICE_UNAVAILABLE);
 		}		
 		
-		
-	/*	try {
-			testRepo.getImage(1);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+	
 		HttpHeaders headers = new HttpHeaders();
 		return new ResponseEntity(passId, headers, HttpStatus.OK);
 	
@@ -64,7 +59,12 @@ public class VisitorServiceHandler{
 	
 	@RequestMapping(value="/search", produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<List<Visitor>> search(@RequestBody SearchCritera criteria){	
+	public ResponseEntity<List<Visitor>> search(@RequestBody SearchCritera criteria){
+		if(!validate(criteria)){
+			HttpHeaders headers = new HttpHeaders();
+			return new ResponseEntity("Something Wrong", headers, HttpStatus.PRECONDITION_FAILED);
+			
+		}
 		List<Visitor> result=Collections.emptyList();
 		try {
 			result = vRepo.search(criteria);
@@ -77,5 +77,14 @@ public class VisitorServiceHandler{
 		HttpHeaders headers = new HttpHeaders();
 	    return new ResponseEntity<List<Visitor>>(result, headers, HttpStatus.OK);
 	
+	}
+
+
+
+	private boolean validate(SearchCritera criteria) {
+		if(criteria.getPassNum().isEmpty() && criteria.getCompany().isEmpty() && criteria.getBuilding().isEmpty()
+				&& criteria.getFromDate().isEmpty()&& criteria.getToDate().isEmpty())
+			return false;
+		return true;
 	}
 }

@@ -33,10 +33,16 @@ $(function() {
 		var word = $(this).val();
 		var added = $(".building_preview").html();
 		added = added + "," + word;
-		if (added.match("^,"))
+		if (added.match("^,")){
 			$(".building_preview").html(added.substring(1));
-		else
+			$("#buildingstr").val(added.substring(1));
+			
+		}
+		else{
 			$(".building_preview").html(added);
+			$("#buildingstr").val(added);
+		}
+		
 		return false;
 	});
 });

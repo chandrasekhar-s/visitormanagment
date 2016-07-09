@@ -118,6 +118,14 @@ div.results {
         width: 100%;
        
     }
+div.message{
+	font: bold 18px Verdana;
+	vertical-align:middle;
+	position:relative;
+	color:black;
+	background-color:#DCDCDC
+
+}
 
 
 /* body {

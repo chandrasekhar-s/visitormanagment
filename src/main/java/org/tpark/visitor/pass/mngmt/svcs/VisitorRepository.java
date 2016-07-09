@@ -45,7 +45,7 @@ public class VisitorRepository{
 	    }
 
 
-	public List<Visitor> _search(SearchCritera criteria) {
+/*	public List<Visitor> _search(SearchCritera criteria) {
 		//Lazy Query :( do better
 		//Set time properly
 		
@@ -80,36 +80,63 @@ public class VisitorRepository{
 			
 		}
 		return result;
-	}
+	}*/
 	
 	public List<Visitor> search(SearchCritera criteria) throws ParseException {
 		
 		List<Visitor> result = new ArrayList<Visitor>();
-		String arr[] =criteria.getFromDate().split("/");
-		String fromDt=arr[2]+"-"+arr[0]+"-"+arr[1];
-
-		String arr_1[] =criteria.getToDate().split("/");
-		String toDt=arr_1[2]+"-"+arr_1[0]+"-"+arr_1[1];
+		String fromDt="";
+		String toDt="";
+	
 		
 		String joinQuery = "SELECT V1.*,V2.IMAGE FROM VISITOR_INFO V1 LEFT JOIN VISITOR_IMAGE V2 ON V1.ID=V2.ID WHERE "
 							+ " ISSUE_DATE BETWEEN :fromDate AND :toDate";
 		
 		String nonJoinQuery= "SELECT * FROM VISITOR_INFO v1 WHERE ISSUE_DATE BETWEEN :fromdate AND :todate";
 		
+		
+		if(!criteria.getFromDate().isEmpty() && !criteria.getToDate().isEmpty()){
+			String arr[] =criteria.getFromDate().split("/");
+			fromDt=arr[2]+"-"+arr[0]+"-"+arr[1];
+	
+			String arr_1[] =criteria.getToDate().split("/");
+			toDt=arr_1[2]+"-"+arr_1[0]+"-"+arr_1[1];
+		}else{
+			Calendar c =Calendar.getInstance();
+			fromDt=c.get(Calendar.YEAR)+"-0"+(c.get(Calendar.MONTH)+1)+"-0"+c.get(Calendar.DATE);
+			toDt=fromDt;
+		}
+		if(!criteria.getPassNum().isEmpty()){
+			joinQuery=joinQuery.concat(" AND V1.ID=:id");
+			nonJoinQuery=nonJoinQuery.concat(" AND ID=:id");
+		}
+		if(!criteria.getBuilding().isEmpty()){
+			joinQuery=joinQuery.concat(" AND V1.BUILDING LIKE :bld");
+			nonJoinQuery=nonJoinQuery.concat(" AND V1.BUILDING LIKE :bld");
+		}
+		
+		if(!criteria.getCompany().isEmpty()){
+			joinQuery=joinQuery.concat(" AND V1.COMPANY=:comp");
+			nonJoinQuery=nonJoinQuery.concat(" AND V1.COMPANY=:comp");
+		}
+		
 		if(criteria.getShowimg().equals("true")){
 			Query query = em.createNativeQuery(joinQuery);
 			query.setParameter("fromDate", fromDt+" 00:00:00");
 			query.setParameter("toDate", toDt+" 23:59:59");
+			//Set Query Params
+			setQueryParams(criteria, query);
 			List queryResult = query.getResultList();
 			for (Iterator iterator = queryResult.iterator(); iterator.hasNext();) {
 				Object[] object = (Object[]) iterator.next();
 				Visitor v = new Visitor();
+				v.setId(Long.parseLong(object[0].toString()));
 				v.setFirstName(object[1].toString());
 				v.setPurpose(object[2].toString());
 				v.setMobile(object[3].toString());
 				v.setAccompanyCount(Integer.parseInt(object[4].toString()));
 				if(object[5]!=null)
-				v.setAccompanyName(object[5].toString());
+					v.setAccompanyName(object[5].toString());
 				v.setCompany(object[6].toString());
 				v.setBuilding(object[7].toString());
 				v.setVechno(object[8].toString());
@@ -117,34 +144,21 @@ public class VisitorRepository{
 				v.setPhotoIdType(object[10].toString());
 				SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				v.setIssuedDate(df2.parse(object[11].toString().substring(0,object[11].toString().indexOf('.'))));
-				//Calendar cal = Calendar.getInstance();
-				//cal.setTimeInMillis(Long.parseLong(object[11].toString()) * 1000);
-				//v.setIssuedDate(cal.getTime());
 				v.setValidity(Integer.parseInt(object[12].toString()));
 				if(object[13]!=null)
 					v.setImageencodestr(object[13].toString());
 				result.add(v);
-				
-				
 			}
-			
-			
-			
-			
 		}else{
 			Query query = em.createNativeQuery(nonJoinQuery,VisitorEntity.class);
 			query.setParameter("fromdate", fromDt+" 00:00:00");
 			query.setParameter("todate", toDt+" 23:59:59");
+			setQueryParams(criteria, query);
 			List<VisitorEntity> entityresult= (List<VisitorEntity>)query.getResultList();
 			Calendar c = Calendar.getInstance();
 			for (VisitorEntity visitorEntity : entityresult) {
 				Visitor visitor = new Visitor();
-				/*c.setTimeInMillis(visitorEntity.getIssuedDate().getTime());
-		        SimpleDateFormat df2 = new SimpleDateFormat("dd/MM/yy HH:mm");
-		        String dateText = df2.format(c.getTime());
-		        System.out.println(dateText);*/
 				BeanUtils.copyProperties(visitorEntity, visitor);
-				//visitor.setIssuedDate(df2.parse(dateText));
 				result.add(visitor);
 				
 			}
@@ -152,5 +166,22 @@ public class VisitorRepository{
 		
 		return result;
 		
+	}
+
+
+	/**
+	 * @param criteria
+	 * @param query
+	 */
+	private void setQueryParams(SearchCritera criteria, Query query) {
+		if(!criteria.getPassNum().isEmpty()){
+			query.setParameter("id",criteria.getPassNum());
+		}
+		if(!criteria.getBuilding().isEmpty()){
+			query.setParameter("bld","%"+criteria.getBuilding()+"%");
+		}
+		if(!criteria.getCompany().isEmpty()){
+			query.setParameter("comp",criteria.getCompany());
+		}
 	}
 }

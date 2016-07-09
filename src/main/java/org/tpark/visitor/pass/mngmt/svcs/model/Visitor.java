@@ -10,6 +10,8 @@ import javax.persistence.Id;
 
 public class Visitor implements Serializable {
 
+	private long id;
+	
 	private String firstName;
 
 	private String purpose;
@@ -35,6 +37,8 @@ public class Visitor implements Serializable {
 	private int validity;
 
 	private String imageencodestr;
+	
+	private String buildingstr;
 
 	public Visitor() {
 
@@ -71,7 +75,7 @@ public class Visitor implements Serializable {
 	}
 
 	public void setCompany(String company) {
-		this.company = company;
+		this.company = company.trim();
 	}
 
 	public String getBuilding() {
@@ -79,7 +83,7 @@ public class Visitor implements Serializable {
 	}
 
 	public void setBuilding(String building) {
-		this.building = building;
+		this.building = building.trim();
 	}
 
 	public String getMobile() {
@@ -152,6 +156,22 @@ public class Visitor implements Serializable {
 
 	public void setValidity(int validity) {
 		this.validity = validity;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getBuildingstr() {
+		return buildingstr;
+	}
+
+	public void setBuildingstr(String buildingstr) {
+		this.buildingstr = buildingstr;
 	}
 
 }
