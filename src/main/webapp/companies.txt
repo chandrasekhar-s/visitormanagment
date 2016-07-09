@@ -1,8 +1,337 @@
-Allianz
-EY
-Infosys
-Quest
-Tata Elxi
-TCS
-UST
-Zachmann
+3 E IT Solutions Pvt Ltd.
+Accel Frontline (Transmatics P Ltd)
+Accentia Technologies (Geosoft)
+Accenture  Services Pvt. Ltd.
+ACIS Allianz Cornhill Information -Unit II
+Acolade Consultants India Pvt. Ltd.
+Amtech
+Adeys Animation Studio Pvt. Ltd.
+Aegis Limited
+AIR Event Services (P) Ltd.
+Akira Software Pvt ltd  (TBIC)
+Alamy Images India P Ltd.
+Amedisoft Technologies (P) Ltd.
+Amstor Information Technology
+Amstor Softech (India) Pvt Ltd.
+Analyse Digital Business Solutions
+Applexus Software Solutions 
+Apsalt  Technologies Pvt. Ltd.
+Aptara Learning Pvt Ltd 
+Inapp Information Technologies
+Arackal Digital Software Solutions
+Ariva Med Data Infotech Pvt Ltd.
+Armtech Solutions (P) Ltd.
+ARS (P) Ltd
+Asianet Satellite Communications
+Assuretech Business Solutions Pvt Ltd
+Aten India Software Solutions Pvt Ltd.
+Athiya Technologies Pvt Ltd
+Attinad  Software Pvt.Ltd.
+Aushim Soft ( Leela Scottish Lace Pvt Ltd)
+Azinova Technologies Pvt. Ltd.
+BGI Technologies Pvt. Ltd, (Sigtech's Space)
+Binary Fountain Solutions (P) Ltd.
+Bizzare FX Technologies Pvt. Ltd.  (TBIC)
+Bizzon Infosolutions Pvt Ltd. 
+Breezego Solutions Pvt Ltd.
+Bmuse India Technologies
+Brillio Technologies (P) Ltd.
+Collabera
+GCI Solutions Pvt Ltd
+C-DAC
+Cadmium Tecnologies & Solutions Pvt Ltd.
+Calmove Technologies Pvt Ltd.
+Capresults Digital Communications
+Castel Technologies Pvt Ltd.
+Castel Medical India Pvt. Ltd.
+Case Consult India P Ltd
+CCS-ELUX Lighting Engineering Pvt Ltd
+Cell Technologies  Pvt Ltd.
+Cellapp Technologies India Pvt. Ltd.
+Certes Innovative Solutions Pvt. Ltd.
+Compu-Needs IT Solutions Pvt Ltd.
+Confianz  Information Technologies
+Conglomerate Web Connect Services Pvt. Ltd
+Conscience Business Solutions (P) Ltd.
+Cosmere Technologies Pvt Ltd.
+Creace Technologies Pvt Ltd. (Lino Computer)
+Creative Bells (Amstor)
+Cronos Consulting India (P) Ltd
+D+H Solutions India (P) Ltd.
+Deogracia Infotech Pvt. Ltd.
+Dev Web Services ( India) Pvt Ltd (TBIC)
+Device  Driven (India) Pvt Ltd.
+Digital Brand Group (P) Ltd.
+DigitsLab Solutions (P) Ltd
+Dimensions Cybertech P Ltd.
+Droidsys Technologies Pvt Ltd.
+DSI Technologies P Ltd.
+Ecowhite Architechtural 
+Mozanta Technologies Pvt. Ltd
+EGlobe IT Solutions (P) Ltd
+Eggs Creative Solutions Pvt. Ltd.
+Electronics Technology Parks
+Elementz Engineering Guild (P) Ltd.
+ELSys Intelligent Devices Pvt Ltd. (TBI)
+Emvigo Innovative Solutions 
+Enfin Technologies India (P) Ltd.
+Enigma Solutions Pvt Ltd.
+Enter Technologies P Ltd (Gulf NRI)
+Entiresoft Technologies Pvt Ltd.
+ERS Softeware Technology  Pvt Ltd.
+Envestnet Asset management (I) Pvt. Ltd.
+eseller Teschnologies
+Eurozapp Technologies Pvt Ltd.
+Exalt Integral Solutions Pvt Ltd.
+Exenta Software private Limited
+Exinary  Technologies Pvt. Ltd.
+Experion Technologies (Infocean Technologies)
+Extolutions (I-manager)
+EYME Technologies Pvt Ltd. (EYME)
+Ernst & Young LLP (EYGTH) 
+Faith Infotech
+Fingent Technology Solutions
+Finware Technologies  Pvt. Ltd.
+Firstpos Retail Softsolutions India Pvt. Ltd.
+Fischer Systems India P Ltd. (US)
+Flip Media Pvt Ltd.
+Flytxt  Technologies Pvt Ltd.
+Focal 3 software Pvt. Ltd.
+Foundling Minds Sofware Pvt Ltd.
+GD Innovative Solutions Pvt.Ltd.
+Gemini Software India P Ltd.
+Geotrans Technologies P Ltd.
+GES Infotek Pvt Ltd.
+Gescis Technologies Pvt. Ltd
+GBPO Solutions  Pvt. Ltd
+Global Design & Engineering Services Pvt Ltd.
+Golunusoft Technologies
+Graphix Island Entertainment Pvt Ltd.
+Green Orchid Software Solutions Pvt Ltd.
+Grid Design Technologies Pvt Ltd.
+GridZone Software Solutions Pvt Ltd.
+Hages Business Solutions Pvt. Ltd.
+Hepsoft Technologies
+HFS  Software Private Ltd. 
+D + H Solutions India (P) Ltd
+Hiworth Solutions Pvt Ltd.
+Host Dime Data Centre Services Pvt. Ltd.
+Hueray Technologies Pvt. Ltd
+Hysitron Nano Technolgy
+IBS Software Services Ltd.
+ICFAI
+ICFOSS ( KSITM) (SDC)
+ICON Clinical research India Pvt Ltd.
+Idynamics Ltd.
+I DYNAMICS - YSC TRIPARTITE
+Igeneration Softwares Pvt Ltd
+IIC Web Solutions Pvt. Ltd
+IIITM-K
+Imrokraft Solutions (P) Ltd.
+Inapp Information Technologies Pvt Ltd.
+Inapp Information Technologies Pvt Ltd.
+Indriya Technologies Pvt Ltd.
+INFOBLOX Technical Support & Software Development Pvt Ltd.
+ICT Academy
+Infosys Technologies Ltd.
+Inometric technologies Pvt Ltd.   (TBI)
+Integral Business & Investment Solutions Pvt. Ltd.
+IDS (Integrated Dynamic Solutions) Pvt Ltd.
+Integris Healthcare Pvt Ltd.
+Intelligo Technologies Pvt Ltd.
+Iqmatrix Infoways Solutions
+ITC  Infotech India Ltd.
+ITL Tours & Travels Pvt Ltd
+Itraitz It Solutions Pvt Ltd.
+J'ouvertmatics Technologies Pvt Ltd.
+KAMEDIA (GI Infologics) Pvt Ltd.
+Kerala Start up Mission (Formerly TBI)
+Kelnet Communications Services P Ltd (Canada)
+KSITIL (Kerala State IT Infrastructure Limited)
+Kernox Learning Systems Pvt. Ltd.
+Kottackkal Business Solutions (P) Ltd.
+Kreara Solutions Pvt Ltd.
+Krigansys Technologies & Applications Pvt. Ltd.
+Lexac IT Solutions Pvt Ltd
+Lightrains Technology (P) Ltd.
+Livares Technologies
+LMB Insurance Brokers Pvt. Ltd.
+Logicmanse Solutions & Technology Consultants Pvt. Ltd.
+Lumicel Technologies (P) Ltd.
+M2 Software & Exports Pvt Ltd (US NRI)
+Macrosoft IT Solutions P Ltd.
+Magnicode Solutions Pvt. Ltd. (TBIC)
+Maxartist Technologies Pvt Ltd.
+McFadyen Consulting Software
+Medinuova Tech (P) Ltd.
+Middle East Technologies
+Mindhelix Technosol(P) Ltd.
+Mirox Cyber Securities Pvt Ltd.
+Mobatia Technology Pvt Ltd.
+Mobilexion Technologies Pvt. Ltd
+Mozanta Technologies Pvt. Ltd.
+Mpulse Software India Pvt. Ltd.
+Muble Solutions Pvt. Ltd.
+Muthoot Pappachan Technologies Ltd.
+MWA Technologies (P) Ltd.  
+NASSCOM
+NRHM
+Navicare Technologies (P) Ltd 
+Need Street Web Technologies Pvt. Ltd.
+Neologix Software Solutions
+NeST SFO Technologies Pvt. Ltd.
+Netroxe IT Solutions Pvt. Ltd.  
+Nocme Technologies Pvt Ltd.
+NocON Solutions Pvt Ltd.
+Noon Technologies
+Noonic Software Development Pvt. Ltd.
+Noratel India Power Components  India Pvt Ltd 
+Toroid
+Ntag Technologies Pvt Ltd.
+Ntrois Technologies Pvt. Ltd.
+Nuaire System (P) Ltd.
+Nxtlive Technologies (quintessance)
+OCS Technologies Pvt Ltd.
+OctaHedral Solutions (P) Ltd.
+OneView Systems (Britek India)
+Opto Logic  Technolgolies Pvt Ltd. (TBIC)
+Oracle India Pvt Ltd.
+Orisys India Consultancy Services LLP(TBIC)
+Ospyn Technologies Pvt Ltd.
+OzTern Technology Pvt. Ltd.
+Paisabids Retail Services Pvt. Ltd.
+Palnar Transmedia (German + Indian)
+Paragon Biomedial i (Indatum  Ltd)
+Pentacircle Informatics Ltd.
+Perfomatix Solution Pvt. Ltd.
+Phykon Solutions Pvt Ltd.
+Pi DIGI-Logical SOLUTIONS (P) Ltd.
+PIT Solutions P Ltd (Swiss + NRI)
+Pivot  Systems (Nair Systems) Pvt Ltd.
+Pixel Margin Software Solutions
+Planetmedia Marketing Technologies Pvt Ltd.
+Polus Software Pvt.Ltd. ( Invision Technologies)
+Prayan Animation Studio Pvt Ltd.
+Protium Logic IT Services
+Proudeon Internet Solutions 
+Croszones Business Solutions Pvt Ltd
+Q-burst Technologies Pvt Ltd. 
+Quest Global Engineering Services (P) Ltd.
+Quintessence Technologies Pvt Ltd.
+Rain Concert  Knowledge Mgt Solutions
+Reflections Infosystems Pvt Ltd.
+Revenuemed India (P) Ltd.
+Reno Deevelopment Technolgy (P) Ltd.
+Reynex Software Pvt Ltd.
+Richi Innovations (ICFOSS)
+RM Education Solutions India
+Ronds Infotech Pvt. Ltd. 
+RP Technosoft Pvt Ltd.
+RR Donnelley (Office Tiger P Ltd)
+Ruby on Rails (Revenuemed Sub lease)
+RWDI Consulting Engineers
+SafeSource Systems & Dara 
+Sansys Software Solutions (:Palnar's)
+SaraTech Solutions (P) ltd.
+Sarfinity Consulting Pvt Ltd.
+Satmetrix India Devt.Inc.
+Saturn Systemwares Pvt Ltd (to Cosmere Technologies)  
+Saxon Systems & Solutions (P) Ltd.
+Schogini  Systems Pvt Ltd.
+Se-mentor Solutions Pvt Ltd.
+Seaview Support Systems (Us + Indian)
+Sensomate Systems
+Senzit Solutions (P) Ltd (Visionics Sub Lease)
+SEZ
+SFO Technologies (P) Ltd.
+Shaan Technologies India (P) Ltd.
+Sherston Educational Software P Ltd.
+Shree Deepam Infotech Pvt Ltd.
+Sigtech Wireless Technologies Pvt Ltd.
+Simplogics Solutions (P) Ltd.
+Sinura Health Inforation Process Solutions 
+Siroco Technologies Pvt. Ltd.
+Softex Digital  P Ltd.
+Softnotions Technologies Pvt Ltd.
+Solutino Technologies  Pvt. Ltd.
+Somnoware Health Care Systems Pvt. Ltd. 
+Sookshmatech Integral Techno Solutions Pvt Ltd.  
+Sparkling Design & Infotech (P) Ltd (Proxy Sub Lease)
+Spef software solutions
+Spericon Technologies Pvt Ltd
+Speridian Technologies Pvt Ltd
+Spotwriters Technologies Pvt :Ltd
+Sree Anand Travels
+Srishti Innovative Computers  Systems Pvt. Ltd.
+Stabilix Solutions  P Ltd (US+NRI)
+Standout IT Solutions Pvt Ltd.
+State Data Centre (Kerala  State IT Mission) 
+STPI
+Suntec Business Solutions P Ltd.
+Swami Cyber Solutions Pvt Ltd)
+Swean  Technologies pvt Ltd
+Tata Communications Ltd ( VSNL)
+Tata Consultancy Services (P) Ltd - Non STP
+Tata Elxsi India  Pvt Ltd.
+TBF Technology Pvt. Ltd.
+Tech4Travels
+Techband Technologies Pvt Ltd.
+Technocus Software Solutions Pvt. Ltd.
+Techping Internet Solutions Pvt Ltd.
+Techrista Systems Pvt. Ltd.
+Techvantage Systems Pvt. Ltd.
+Telmoco Development  Labs
+Testhouse India Pvt. Ltd.
+Inapp Information Technologies 
+TetraTech India Pvt Ltd.
+Technvantage Systems P Ltd.
+ThinkPalm Technologies Pvt. Ltd.
+TKM Infotech Pvt. Ltd.
+TNGiCUBE Technology resources PvtLtd
+Thoughtline Technologies Pvt Ltd.
+Toonz Animation India Pvt Ltd (US)
+TrailBlazer Solutions Pvt Ltd (TBIC)
+Trandms Media & Technology Services 
+Transversal e-Networks Pvt Ltd. ( UST Global)
+Travancore Analytics Pvt Ltd.
+Triassic Solutions Pvt Ltd.
+Triv  Software Pvt Ltd.
+Trivand Technologies (P) Ltd.
+Tryzens India (P) Ltd. 
+Twenty 20
+ThinkBig  Software Solutions Pvt. Ltd
+Tyrus Technologies Pvt Ltd.
+UL Technology Solutions (P) Ltd.
+Uniware Solutions (P) Ltd.
+Uroleaf Technologies Pvt. Ltd. 
+UST Global (US Software)
+Vanilla Networks Pvt Ltd
+VBIS (Alif Technologies Pvt. Ltd)
+Veristics  Networks (P) Ltd.
+Vimeg Square Technologies Pvt. Ltd
+Vinvish Technologies P Ltd.
+Virtus IT Services ( MDI Datanet )
+Visionics India Pvt Ltd (Sweden /Singapore)
+Visual Graphics Computing Service (McKinsely)
+Volmacht  Business Solutions Pvt. Ltd.
+V Plus premedia (p)Ltd
+Vyga Animation
+Waybeo Technologies Pvt Ltd (TBIC)
+Webture Technologies Pvt. Ltd. (TTBI)
+WhiteOval Technologies Pvt Ltd.
+Winwrench Software Solutions Pvt Ltd.
+Xenfy Infolabs Private Limited
+Xminds
+Xpertize Technology Solutions Pvt Ltd.
+Yarab Technologies Pvt. Ltd.
+Ylem Infotech Pvt. Ltd. (Sublease)
+YMA Soft Integrate Delivery (P) Ltd.
+Ymates Technologies LLP.
+Ymates Technologies LLP.
+YSC ENGINEERING SERVICES (P) LTD.
+Zafin Software Centrefor Excellence
+Zen Aspirations
+Zestybeanz Technologies Pvt.Ltd.
+Zoondia Technologies Pvt. Ltd.
+Zorus Technologies (P) Ltd.
+Zyphix Technologies Pvt.Ltd.

@@ -124,27 +124,26 @@
 				</div>
 				<div class="col3">
 				<div id="preview">
-					<fieldset >
+					<fieldset>
 						<legend  id="previewlgnd">Preview Pass</legend>
-						<img id="icon" src="./images/logo.jpg"  width="100" height="100"/><br>
+						<img id="icon" src="./images/logo.jpg"  width="65" height="20"/><br>
 						<img id="vpreview" src="" width="150" height="150" />
-						 <br /> 
+						 <br />
 						 No:<span class="passid_preview"></span> <br /> 
 						 Name:<span class="firstname_preview"></span><span class="accmpny_cnt_preview"></span> <br /> 
 						 Purpose:<span class="purpose_preview"></span> <br /> 
-						 Mobile:<span class="tel_preview"></span><br />
+						<!--  Mobile:<span class="tel_preview"></span><br />  -->
 						 Company:<span class="company_preview"></span><br /> 
 						 Building:<span class="building_preview"></span><br />
-						 Vehicle No:<span class="vechno_preview"></span><br />
+						<!--  Vehicle No:<span class="vechno_preview"></span><br /> -->
 						 Issued On:<span class="date"></span><br />
 						 Time In:<span class="time"></span><br />
-						 Valid for (Hours):<span class="validupto_preview"></span><br />
-						<!--  <div id="bcTarget"></div>  -->
-						</br>
-						 
-						<input type="submit" id="print" value="Print" onclick="window.print()" disabled="disabled" />
-					</fieldset>					 
+						 Valid for (Hours):<span class="validupto_preview"></span>
+						 <span id="printfooter" class="printfooter"><center>Powered by Prathidhwani</center></span>						
+							 
+					</fieldset>			
 					</div>
+					<input type="submit" id="print" value="Print" onclick="window.print()" disabled="disabled" />	
 				</div>				
 			</div>
 		</div>
@@ -212,10 +211,10 @@ function captureImage() {
 	document.getElementById('canvasHolder').appendChild(canvas);
 	var ctx = canvas.getContext('2d');
 	canvas.width = video.videoWidth / 6;
-	canvas.height = video.videoHeight / 4;
+	canvas.height = video.videoHeight / 6;
 	ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 	// save canvas image as data url
-	dataURL = canvas.toDataURL();
+	dataURL = canvas.toDataURL('image/jpeg',1.0);
 	// set preview image src to dataURL
 	document.getElementById('vpreview').src = dataURL;
 	// place the image value in the text box

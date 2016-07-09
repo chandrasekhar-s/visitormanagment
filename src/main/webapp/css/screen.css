@@ -45,7 +45,7 @@
 	
 }
 .blogstyle .col3 {
-	width:21%;				/* Width of right column content (column width minus padding on either side) */
+	width:20%;				/* Width of right column content (column width minus padding on either side) */
 	left:60%;				/* Please make note of the brackets here:
 						(100% - left column width) plus (center column left and right padding) plus (left column left and right padding) plus (right column left padding) */
 }

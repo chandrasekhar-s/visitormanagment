@@ -1,15 +1,16 @@
 package org.tpark.visitor.pass.mngmt.svcs;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.Transient;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
@@ -81,7 +82,7 @@ public class VisitorRepository{
 		return result;
 	}
 	
-	public List<Visitor> search(SearchCritera criteria) {
+	public List<Visitor> search(SearchCritera criteria) throws ParseException {
 		
 		List<Visitor> result = new ArrayList<Visitor>();
 		String arr[] =criteria.getFromDate().split("/");
@@ -114,9 +115,14 @@ public class VisitorRepository{
 				v.setVechno(object[8].toString());
 				v.setPhotoId(object[9].toString());
 				v.setPhotoIdType(object[10].toString());
-				//v.setIssuedDate(Date.(object[11].toString()));
+				SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				v.setIssuedDate(df2.parse(object[11].toString().substring(0,object[11].toString().indexOf('.'))));
+				//Calendar cal = Calendar.getInstance();
+				//cal.setTimeInMillis(Long.parseLong(object[11].toString()) * 1000);
+				//v.setIssuedDate(cal.getTime());
 				v.setValidity(Integer.parseInt(object[12].toString()));
-				v.setImageencodestr(object[13].toString());
+				if(object[13]!=null)
+					v.setImageencodestr(object[13].toString());
 				result.add(v);
 				
 				
@@ -130,9 +136,15 @@ public class VisitorRepository{
 			query.setParameter("fromdate", fromDt+" 00:00:00");
 			query.setParameter("todate", toDt+" 23:59:59");
 			List<VisitorEntity> entityresult= (List<VisitorEntity>)query.getResultList();
+			Calendar c = Calendar.getInstance();
 			for (VisitorEntity visitorEntity : entityresult) {
 				Visitor visitor = new Visitor();
+				/*c.setTimeInMillis(visitorEntity.getIssuedDate().getTime());
+		        SimpleDateFormat df2 = new SimpleDateFormat("dd/MM/yy HH:mm");
+		        String dateText = df2.format(c.getTime());
+		        System.out.println(dateText);*/
 				BeanUtils.copyProperties(visitorEntity, visitor);
+				//visitor.setIssuedDate(df2.parse(dateText));
 				result.add(visitor);
 				
 			}

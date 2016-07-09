@@ -55,7 +55,8 @@
 						<fieldset>
 							<legend>Enter Details</legend>
 							<ol>
-
+								
+							
 								<li><label for="fromDate">From Date *</label> <input
 									type="text" id="fromDate" name="fromDate"
 									placeholder="From Date" class="fromDate" required /></li>
@@ -79,16 +80,15 @@
 	</div>
 
 	<div id="results" class="results" style="display:none">
-		<table class="display" cellspacing="0" border="0"
-			id="tableId">
-			<thead>
+		<table class="display" cellspacing="0" border="0"	id="tableId">
+			<!-- <thead>
 				<tr>
 					<th width="10%">First Name</th>
 					<th width="10%">Mobile</th>
 					<th width="10%">Purpose</th>
-					<!-- <th width="10%">Image</th> -->
+					<th width="10%">Image</th>
 				</tr>
-			</thead>
+			</thead> -->
 		</table>
 	</div>
 
@@ -103,6 +103,7 @@ $("#signup").submit(
 		
 		function(event) {
 			var formJqObj = $("#signup");
+			 	
 			var formDataObj = {};
 			(function() {
 				formJqObj.find(":input").not("[type='submit']").not(
@@ -117,7 +118,7 @@ $("#signup").submit(
 				});
 			})();
 			console.log('' + JSON.stringify(formDataObj))
-			$("#tableId").dataTable().fnDestroy();
+			
 			$.ajax({
 				type : "POST",
 				url : "/visitormanagment/api/visitor/search",
@@ -126,38 +127,63 @@ $("#signup").submit(
 
 			}).done(
 					function(data, textStatus, jqXHR) {
+						
 						//console.log("Ajax completed: " + JSON.stringify(data));
 						//var oTable = $('#tableId').dataTable();//JSON.stringify(data));
+						//$("#tableId > thead").html("");
+						var header = "<thead><tr><th width=\"10%\">First Name</th><th width=\"10%\">Mobile</th><th width=\"10%\">Purpose</th><th width=\"10%\">Issue Date</th><th width=\"10%\"></th></tr></thead>";
+						$("#tableId").html(header); 
 						if($("#showimg").is(':checked')){
-							var header = "<th>Photo</th>";
-							$("#tableId").html(header); 
+							console.log(">>> true >> ");
+							//$("#tableId").html("");
 							$('#tableId').dataTable({
 					        	"bJQueryUI":true,
 					            "bScrollCollapse":true,
+					            "bSortable":true,
+					            "destroy":true,
 					            aaData:data,
+					            "aaSorting": [[ 3, "desc" ]],
 					            "aoColumns":
 					            	[
-				                        { "mData": "firstName" },
+										 { "mData": "firstName" },
 				                        { "mData": "mobile" },
 				                        { "mData": "purpose" },
+				                        { "mData": "issuedDate","sType": 'date'  , "render": function (data) {
+				                            var date = new Date(data);
+				                            var month = date.getMonth() + 1;
+				                            return date.getDate() + "/" + (month.length > 1 ? month :  month)  + "/" + date.getFullYear();
+				                            //+" : "+ date.getHours()+" : "+date.getMinutes();
+				                        }},
 				                        { "mRender":
 				                        	  function(data, type, full) {
-				                        		return '<img src="data:image/png;base64,'+full.imageencodestr+'"\>';
+				                          		return '<img src="data:image/png;base64,'+full.imageencodestr+'"\>';
 				                        	 }
 				                        }
 				                      ]
 					         });
 						}else{
-							
+							//$("#tableId").html("");
+														
 							$('#tableId').dataTable({
 					        	"bJQueryUI":true,
 					            "bScrollCollapse":true,
+					            "bSortable":true,
+					            "destroy":true,
 					            aaData:data,
+					            "aaSorting": [[ 3, "desc" ]],
 					            "aoColumns":
 					            	[
+										
 				                        { "mData": "firstName" },
 				                        { "mData": "mobile" },
-				                        { "mData": "purpose" },				                       
+				                        { "mData": "purpose" },
+				                        { "mData": "issuedDate","sType": 'date'  , "render": function (data) {
+				                            var date = new Date(data);
+				                            var month = date.getMonth() + 1;
+				                            return date.getDate() + "/" + (month.length > 1 ? month :  month) + "/" + date.getFullYear();
+				                            //+" : "+ date.getHours()+" : "+date.getMinutes();
+				                        }}
+				                        
 				                      ]
 					         });
 						}

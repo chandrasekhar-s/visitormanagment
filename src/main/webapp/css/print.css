@@ -16,10 +16,44 @@
 #footer{
 	display: none;
 }
-#print1{
+#print{
+	display: none;
+}
+.menu3{
 	display: none;
 }
 #previewlgnd{
 	display: none;
 }
-#preview fieldset{margin: 0 0 20px;padding: 20px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px; width:200px;}
+#preview fieldset{
+	font-family:Arial;
+	font-size: 13px;
+	margin-left: 2px;
+	margin-right: 2px;
+	/*padding-top: 0.25em;*/
+	padding-bottom: 0.625em;
+	padding-left: 0.75em;
+	padding-right: 0.75em;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;width:200px;
+}
+/* Footer styles */
+.printfooter {
+	clear:both;
+	float:center;
+	width:100%;
+	/* border-top:1px solid #000; */
+	font-family:Arial;
+	font-size: 0.8em;
+}
+#printfooter p {
+	padding:10px;
+	margin:0;
+	clear:both;
+	float:center;
+	width:100%;
+	/* border-top:1px solid #000; */
+	font-size: 0.8em;
+	font-family:Arial;
+	}

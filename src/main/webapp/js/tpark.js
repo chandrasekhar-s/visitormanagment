@@ -41,7 +41,7 @@ $(function() {
 	});
 });
 $(function() {
-	$(".company").change(function() {
+	$(".company").blur(function() {
 		var word = $(this).val();
 		$(".company_preview").html(word);
 		return false;
