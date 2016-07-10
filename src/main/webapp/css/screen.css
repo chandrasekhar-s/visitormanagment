@@ -126,8 +126,10 @@ div.message{
 	background-color:#DCDCDC
 
 }
-
-
+div.dt-buttons {
+    float: center;
+    margin-left:10px;
+}
 /* body {
 	margin:0;
 	padding:0;

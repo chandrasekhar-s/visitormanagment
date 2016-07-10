@@ -65,6 +65,11 @@ public class VisitorServiceHandler{
 			return new ResponseEntity("Something Wrong", headers, HttpStatus.PRECONDITION_FAILED);
 			
 		}
+		/*Bad Code !!!! , Validation at Client side not working, will fix some day !*/
+		else if((criteria.getFromDate().isEmpty()&& !criteria.getToDate().isEmpty()) || (!criteria.getFromDate().isEmpty()&& criteria.getToDate().isEmpty())){
+			HttpHeaders headers = new HttpHeaders();
+			return new ResponseEntity("Something Wrong", headers, HttpStatus.PRECONDITION_REQUIRED);
+		}
 		List<Visitor> result=Collections.emptyList();
 		try {
 			result = vRepo.search(criteria);

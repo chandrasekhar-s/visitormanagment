@@ -89,41 +89,58 @@ public class VisitorRepository{
 		String toDt="";
 	
 		
-		String joinQuery = "SELECT V1.*,V2.IMAGE FROM VISITOR_INFO V1 LEFT JOIN VISITOR_IMAGE V2 ON V1.ID=V2.ID WHERE "
-							+ " ISSUE_DATE BETWEEN :fromDate AND :toDate";
+		String joinQuery = "SELECT V1.*,V2.IMAGE FROM VISITOR_INFO V1 LEFT JOIN VISITOR_IMAGE V2 ON V1.ID=V2.ID WHERE ";
+							//+ " ISSUE_DATE BETWEEN :fromDate AND :toDate";
 		
-		String nonJoinQuery= "SELECT * FROM VISITOR_INFO v1 WHERE ISSUE_DATE BETWEEN :fromdate AND :todate";
+		String nonJoinQuery= "SELECT * FROM VISITOR_INFO v1 WHERE ";//ISSUE_DATE BETWEEN :fromdate AND :todate";
 		
-		
+		boolean AND_COND=false;
 		if(!criteria.getFromDate().isEmpty() && !criteria.getToDate().isEmpty()){
 			String arr[] =criteria.getFromDate().split("/");
 			fromDt=arr[2]+"-"+arr[0]+"-"+arr[1];
 	
 			String arr_1[] =criteria.getToDate().split("/");
 			toDt=arr_1[2]+"-"+arr_1[0]+"-"+arr_1[1];
-		}else{
-			Calendar c =Calendar.getInstance();
-			fromDt=c.get(Calendar.YEAR)+"-0"+(c.get(Calendar.MONTH)+1)+"-0"+c.get(Calendar.DATE);
-			toDt=fromDt;
+			joinQuery=joinQuery.concat(" ISSUE_DATE BETWEEN :fromdate AND :todate");
+			nonJoinQuery=nonJoinQuery.concat(" ISSUE_DATE BETWEEN :fromdate AND :todate");
+			AND_COND=true;
 		}
 		if(!criteria.getPassNum().isEmpty()){
-			joinQuery=joinQuery.concat(" AND V1.ID=:id");
-			nonJoinQuery=nonJoinQuery.concat(" AND ID=:id");
+			
+			if(AND_COND){
+				joinQuery=joinQuery.concat(" AND ");
+				nonJoinQuery=nonJoinQuery.concat(" AND ");
+			}
+			joinQuery=joinQuery.concat("  V1.ID=:id");
+			nonJoinQuery=nonJoinQuery.concat(" ID=:id");
+			AND_COND=true;
 		}
 		if(!criteria.getBuilding().isEmpty()){
-			joinQuery=joinQuery.concat(" AND V1.BUILDING LIKE :bld");
-			nonJoinQuery=nonJoinQuery.concat(" AND V1.BUILDING LIKE :bld");
+			if(AND_COND){
+				joinQuery=joinQuery.concat(" AND ");
+				nonJoinQuery=nonJoinQuery.concat(" AND ");
+			}
+			joinQuery=joinQuery.concat("  V1.BUILDING LIKE :bld");
+			nonJoinQuery=nonJoinQuery.concat("  V1.BUILDING LIKE :bld");
+			AND_COND=true;
 		}
 		
 		if(!criteria.getCompany().isEmpty()){
-			joinQuery=joinQuery.concat(" AND V1.COMPANY=:comp");
-			nonJoinQuery=nonJoinQuery.concat(" AND V1.COMPANY=:comp");
+			if(AND_COND){
+				joinQuery=joinQuery.concat(" AND ");
+				nonJoinQuery=nonJoinQuery.concat(" AND ");
+			}
+			joinQuery=joinQuery.concat("  V1.COMPANY=:comp");
+			nonJoinQuery=nonJoinQuery.concat("  V1.COMPANY=:comp");
+			AND_COND=true;
 		}
 		
 		if(criteria.getShowimg().equals("true")){
 			Query query = em.createNativeQuery(joinQuery);
-			query.setParameter("fromDate", fromDt+" 00:00:00");
-			query.setParameter("toDate", toDt+" 23:59:59");
+			if(!criteria.getFromDate().isEmpty() && !criteria.getToDate().isEmpty()){
+				query.setParameter("fromdate", fromDt+" 00:00:00");
+				query.setParameter("todate", toDt+" 23:59:59");
+			}
 			//Set Query Params
 			setQueryParams(criteria, query);
 			List queryResult = query.getResultList();
@@ -151,8 +168,10 @@ public class VisitorRepository{
 			}
 		}else{
 			Query query = em.createNativeQuery(nonJoinQuery,VisitorEntity.class);
-			query.setParameter("fromdate", fromDt+" 00:00:00");
-			query.setParameter("todate", toDt+" 23:59:59");
+			if(!criteria.getFromDate().isEmpty() && !criteria.getToDate().isEmpty()){
+				query.setParameter("fromdate", fromDt+" 00:00:00");
+				query.setParameter("todate", toDt+" 23:59:59");
+			}
 			setQueryParams(criteria, query);
 			List<VisitorEntity> entityresult= (List<VisitorEntity>)query.getResultList();
 			Calendar c = Calendar.getInstance();

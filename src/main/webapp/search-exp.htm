@@ -12,13 +12,21 @@
 
 <link rel="stylesheet" type="text/css" href="./css/jquery.dataTables_themeroller.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="./css/jquery.dataTables.min.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="./css/buttons.dataTables.min.css" />
 <link rel="stylesheet" href="./css/jquery-ui.css">
 
-<script src="./js/jquery-1.10.2.min.js"></script>
+<script src="./js/jquery-1.12.3.js"></script>
+<script type="text/javascript" src="./js/jquery.dataTables.10.12.min.js"></script>
+
 <script src="./js/jquery-ui.js"></script>
 <script type="text/javascript" src="./js/tpark.js"></script>
-
-<script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="./js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="./js/buttons.flash.min.js"></script>
+<script type="text/javascript" src="./js/jszip.min.js"></script>
+<script type="text/javascript" src="./js/pdfmake.min.js"></script>
+<script type="text/javascript" src="./js/vfs_fonts.js"></script>
+<script type="text/javascript" src="./js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="./js/buttons.print.min.js"></script>
 
 <script>
   $(function() {
@@ -126,16 +134,18 @@ $("#signup").submit(
 
 			}).done(
 					function(data, textStatus, jqXHR) {
-						var header = "<thead><tr><th width=\"5%\">Issue Date</th><th width=\"5%\">Issue Time</th><th width=\"5%\">Serial Number</th><th width=\"10%\">First Name</th><th width=\"10%\">Mobile</th><th width=\"10%\">Purpose</th><th width=\"10%\">Building</th><th width=\"10%\">Company</th><th width=\"10%\"></th></tr></thead>";
+						var header = "<thead><tr><th width=\"5%\">Issue Date</th><th width=\"5%\">Issue Time</th><th width=\"5%\">Serial Number</th><th width=\"10%\">First Name</th><th width=\"10%\">Mobile</th><th width=\"10%\">Purpose</th><th width=\"10%\">Building</th><th width=\"10%\">Company</th><th width=\"10%\">Image</th></tr></thead>";
 						$("#tableId").html(header); 
 						if($("#showimg").is(':checked')){
 							$('#tableId').dataTable({
+								dom: 'Bfrtip', buttons: [ 'copy', 'csv', 'excel', 'pdf', 'print' ],
 					        	"bJQueryUI":true,
 					            "bScrollCollapse":true,
 					            "bSortable":true,
 					            "destroy":true,
 					            aaData:data,
 					            "aaSorting": [[ 0, "desc" ]],
+					            
 					            "aoColumns":
 					            	[
 					            	 { "mData": "issuedDate","sType": 'date'  , "render": function (data) {
@@ -166,12 +176,14 @@ $("#signup").submit(
 					         });
 						}else{
 							$('#tableId').dataTable({
+								 dom: 'Bfrtip', buttons: [ 'copy', 'csv', 'excel', 'pdf', 'print' ],
 					        	"bJQueryUI":true,
 					            "bScrollCollapse":true,
 					            "bSortable":true,
 					            "destroy":true,
 					            aaData:data,
 					            "aaSorting": [[ 0, "desc" ]],
+					           
 					            "aoColumns":
 					            	[
 					            	 	{ "mData": "issuedDate","sType": 'date'  , "render": function (data) {
